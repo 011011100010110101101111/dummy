@@ -23,7 +23,7 @@ export default {
                 theme: 'night',
                 lineNumbers: true,
                 line: true,
-                extraKeys: { 'Ctrl': 'autocomplete', 'Enter': this.enter}
+                extraKeys: { 'Ctrl': 'autocomplete', 'Enter': this.enter},
             },
             code: 'aaa\nddd\n'
         }
@@ -58,10 +58,16 @@ export default {
                 }
             }
         },
-        enter() {
-            let str = '\nhaha'
-            this.code = this.code.concat(str)
-            console.log(this.code)
+        enter(cm) {
+            // TODO 完善回车功能
+            let sels = cm.listSelections()
+            for (let i = sels.length - 1; i >= 0; i--)
+            cm.replaceRange(cm.doc.lineSeparator(), sels[i].anchor, sels[i].head, "+input")
+            sels = cm.listSelections()
+            for (let i = 0; i < sels.length; i++)
+            cm.indentLine(sels[i].from().line, null, true)
+            var line = cm.getDoc().getLine(cm.getDoc().lineCount() - 2);
+            console.log(line)
         }
     }
 }
