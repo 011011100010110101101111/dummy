@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <Index />
+    <Index class="index"/>
   </div>
 </template>
 
@@ -20,5 +20,11 @@ export default {
 body {
   margin: 0;
   padding: 0;
+  background-color: #0a001f;
+}
+.index {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
 }
 </style>

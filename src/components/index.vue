@@ -23,9 +23,9 @@ export default {
                 theme: 'night',
                 lineNumbers: true,
                 line: true,
-                extraKeys: { 'Ctrl': 'autocomplete', 'Enter': this.enter},
+                extraKeys: { 'Ctrl': 'autocomplete', 'Enter': this.enter}
             },
-            code: 'aaa\nddd\n'
+            code: 'root@dummy % '
         }
     },
     mounted() {
@@ -66,6 +66,7 @@ export default {
             sels = cm.listSelections()
             for (let i = 0; i < sels.length; i++)
             cm.indentLine(sels[i].from().line, null, true)
+
             var line = cm.getDoc().getLine(cm.getDoc().lineCount() - 2);
             console.log(line)
         }
